@@ -9,24 +9,10 @@
     },
     {
       "id": 2,
-      "message": "Fixed hard drive on workstation 002",
+      "message": "Fixed hard drive on workstation 666",
       "attention": false,
       "tech": "John Doe",
-      "date": "2019-05-31T16:18:04.245Z"
-    },
-    {
-      "message": "1122 wireless down",
-      "attention": true,
-      "tech": "Sara Wilson",
-      "date": "2019-05-31T15:46:48.690Z",
-      "id": 3
-    },
-    {
-      "id": 4,
-      "message": "Workstation 026 is up and running",
-      "attention": false,
-      "tech": "Sara Wilson",
-      "date": "2019-05-31T19:57:35.544Z"
+      "date": "2019-12-15T16:11:46.518Z"
     }
   ],
   "techs": [

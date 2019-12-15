@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useRef } from "react";
+import { connect } from "react-redux";
+import { setSearch} from "../../actions/logsActions";
 
-const SearchBar = () => {
+const SearchBar = ({ setSearch }) => {
+  const search = useRef("");
+
+  const onFilter = e => {
+    if(search.current.value){
+      setSearch(e.target.value)
+    }else{
+      setSearch(null)
+    }
+  }
+  const clearInput = () => {
+    search.current.value = ''
+    setSearch(null)
+  }
   return (
     <nav style={{ marginBottom: "30px" }} className="blue">
       <div className="nav-wrapper">
         <form>
           <div className="input-field container" style={{margin: "0 auto"}}>
-            <input id="search" name="search" type="search" required />
+            <input id="search" name="search" type="search" placeholder="Search logs..." onChange={onFilter} ref={search}/>
             <label className="label-icon" htmlFor="search">
               <i className="material-icons">search</i>
             </label>
-            <i className="material-icons">close</i>
+            <i className="material-icons" onClick={clearInput}>close</i>
           </div>
         </form>
       </div>
@@ -18,4 +33,4 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default connect(null, { setSearch })(SearchBar);
