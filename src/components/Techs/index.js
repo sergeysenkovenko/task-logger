@@ -1,2 +1,3 @@
 import Techs from "./Techs";
-export default Techs;
+import TechSelect from "./TechSelect";
+export { Techs, TechSelect};

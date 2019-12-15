@@ -7,7 +7,7 @@ import AddBtn from "../Controls/AddBtn";
 import AddLogModal from "../Modals/AddLogModal";
 import AddTechModal from "../Modals/AddTechModal";
 import EditLogModal from "../Modals/EditLogModal";
-import Techs from "../Techs";
+import { Techs } from "../Techs";
 import { Provider } from "react-redux";
 import store from "../../store";
 

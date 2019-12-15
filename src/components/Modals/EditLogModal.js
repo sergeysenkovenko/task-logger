@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { TechSelect } from "../Techs";
 import PropTypes from "prop-types";
 import M from "materialize-css/dist/js/materialize.min.js";
 import { updateLog } from "../../actions/logsActions";
@@ -17,7 +18,8 @@ const EditLogModal = ({ current, updateLog }) => {
     }
   }, [current]);
 
-  const onSubmit = () => {
+  const onSubmit = e => {
+    e.preventDefault();
     if (!message || !tech) {
       M.toast({ html: "Please enter a message and tech" });
     } else {
@@ -65,8 +67,7 @@ const EditLogModal = ({ current, updateLog }) => {
               <option value="" disabled>
                 Select Technician
               </option>
-              <option value="Brad">Brad</option>
-              {/* <TechSelectOptions /> */}
+              <TechSelect />
             </select>
           </div>
         </div>

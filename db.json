@@ -1,35 +1,37 @@
 {
   "logs": [
     {
-      "message": "Changed network card in server 007",
+      "id": 2,
+      "message": "Something wrong",
       "attention": false,
-      "tech": "Sam Smith",
-      "date": "2019-05-31T15:46:10.179Z",
-      "id": 1
+      "tech": "Ben Sheaf",
+      "date": "2019-12-15T19:29:33.184Z"
     },
     {
-      "id": 2,
-      "message": "Fixed hard drive on workstation 666",
+      "message": "Server was down",
+      "attention": true,
+      "tech": "William Lawson",
+      "date": "2019-12-15T19:43:34.938Z",
+      "id": 3
+    },
+    {
+      "message": "Server up and running",
       "attention": false,
-      "tech": "John Doe",
-      "date": "2019-12-15T16:11:46.518Z"
+      "tech": "William Lawson",
+      "date": "2019-12-15T19:55:40.305Z",
+      "id": 4
     }
   ],
   "techs": [
     {
-      "id": 1,
-      "firstName": "John",
-      "lastName": "Doe"
+      "firstName": "William",
+      "lastName": "Lawson",
+      "id": 1
     },
     {
-      "id": 2,
-      "firstName": "Sam",
-      "lastName": "Smith"
-    },
-    {
-      "id": 3,
-      "firstName": "Sara",
-      "lastName": "Wilson"
+      "firstName": "Emily",
+      "lastName": "Rose",
+      "id": 2
     }
   ]
 }

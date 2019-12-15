@@ -1,35 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { getTechs } from "../../actions/techsActions";
 import TechItem from "./TechItem";
 
-const Techs = () => {
-  const [techs, setTechs] = useState([]);
-  const [loading, setLoading] = useState(false);
-
+const Techs = ({ getTechs, techs: { techs, loading } }) => {
   useEffect(() => {
     getTechs();
     //eslint-disable-next-line
   }, []);
 
-  const getTechs = async () => {
-    setLoading(true);
-    const res = await fetch("/techs");
-    const data = await res.json();
-    setTechs(data);
-    setLoading(false);
-  };
+  const placeholder = !loading && techs && techs.length === 0 && (
+    <p className="center">No techs yet...</p>
+  );
 
   return (
-    <div id='tech-list-modal' className='modal'>
-      <div className='modal-content'>
+    <div id="tech-list-modal" className="modal">
+      <div className="modal-content">
         <h4>Technician List</h4>
-        <ul className='collection'>
+        <ul className="collection">
           {!loading &&
             techs &&
             techs.map(tech => <TechItem tech={tech} key={tech.id} />)}
+          {placeholder}
         </ul>
       </div>
     </div>
   );
 };
 
-export default Techs;
+Techs.propTypes = {
+  techs: PropTypes.object.isRequired,
+  getTechs: PropTypes.func.isRequired
+};
+
+const mapStateToProps = ({ techs }) => ({
+  techs
+});
+
+export default connect(mapStateToProps, { getTechs })(Techs);
