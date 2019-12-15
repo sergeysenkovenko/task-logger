@@ -8,23 +8,27 @@ import AddLogModal from "../Modals/AddLogModal";
 import AddTechModal from "../Modals/AddTechModal";
 import EditLogModal from "../Modals/EditLogModal";
 import Techs from "../Techs";
+import { Provider } from "react-redux";
+import store from "../../store";
 
 const App = () => {
   useEffect(() => {
     M.AutoInit();
   });
   return (
-    <div>
-      <SearchBar />
-      <div className="container">
-        <Logs />
-        <AddBtn />
-        <AddLogModal />
-        <AddTechModal />
-        <EditLogModal />
-        <Techs/>
+    <Provider store={store}>
+      <div>
+        <SearchBar />
+        <div className="container">
+          <Logs />
+          <AddBtn />
+          <AddLogModal />
+          <AddTechModal />
+          <EditLogModal />
+          <Techs />
+        </div>
       </div>
-    </div>
+    </Provider>
   );
 };
 

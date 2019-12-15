@@ -1,26 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 import LogItem from "./LogItem";
 import Spinner from "../Spinner";
+import { getLogs } from "../../actions/logsActions";
 
-const Logs = () => {
-  const [logs, setLogs] = useState([]);
-  const [loading, setLoading] = useState(false);
-
+const Logs = ({ logs: { logs, loading }, getLogs }) => {
   useEffect(() => {
     getLogs();
     //eslint-disable-next-line
   }, []);
 
-  const getLogs = async () => {
-    setLoading(true);
-    const res = await fetch("/logs");
-    const data = await res.json();
-    setLogs(data);
-    setLoading(false);
-  };
-
-  if (loading) {
-    return <Spinner/>
+  if (loading || !logs) {
+    return <Spinner />;
   }
   return (
     <ul className="collection with-header">
@@ -36,4 +28,13 @@ const Logs = () => {
   );
 };
 
-export default Logs;
+Logs.propTypes = {
+  logs: PropTypes.object.isRequired,
+  getLogs: PropTypes.func.isRequired
+};
+
+const mapStateToProps = ({ logs }) => ({
+  logs
+});
+
+export default connect(mapStateToProps, { getLogs })(Logs);
